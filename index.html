@@ -17,13 +17,17 @@
       So let's see what it's like to implement a Blackjack table.  Enjoy.
     </p>
 
+    <button id="showdeck" onclick="d.show('.deck')">Show Deck</button>
     <div class="table">
       <div class="deck"></div>
     </div>
 
-    <script src="/script/angular/angular.js"></script>
-
     <script src="blackjack.js"></script>
+
+    <script>
+      var d = new Deck();
+      document.querySelector("#showdeck").click();
+    </script>
 
   </body>
 
