@@ -8,7 +8,7 @@ var Card = function(rank, suit){
     "Hearts": "red",
     "Diamonds": "red",
     "Clubs": "black"
-  };
+  }
 
   this.color = colors[suit];
 
@@ -36,19 +36,19 @@ var Card = function(rank, suit){
       12: "Q",
       13: "K"
     }
-  };
 
+  }
 
   function createLabel(classname){
     var label = document.createElement("span");
-    label.innerHTML = symbols.ranks[rank] + " " + symbols.suits[suit];
+    label.innerHTML = symbols.ranks[rank] + symbols.suits[suit];
     label.setAttribute("class", classname);
     return label;
-  };
+  }
 
   // Create the HTML structure
   this.html = document.createElement("div");
-  this.html.setAttribute("class", "card " + this.color);
+  this.html.setAttribute("class", "card " + this.color + " back");
 
   // labels (rank and suit signifiers at top left and bottom right)
   var labeltext = this.rank + this.suit;
@@ -60,7 +60,7 @@ var Card = function(rank, suit){
   this.html.appendChild(label2);
   this.html.appendChild(label3);
 
-};
+}
 
 var Deck = function(){
 
@@ -79,9 +79,9 @@ var Deck = function(){
     var container = document.querySelector(container_selector);
     for(i in this.cards){
       var card = this.cards[i];
-      card.html.style.left = (i * 10) + "px";
+      card.html.style.left = (i * 15) + "px";
       container.appendChild(card.html);
-    };
-  };
+    }
+  }
   
-};
+}

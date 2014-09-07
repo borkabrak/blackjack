@@ -2,6 +2,7 @@ $felt: green;
 $chalk: #ffffaa;
 $red: red;
 $black: black;
+$brown: #840;
 
 body {
   margin-left: 5em;
@@ -16,20 +17,26 @@ body {
   color: $black;
 }
 
+.card.back {
+  background-image: url("rider-back-red-75x105.png");
+  color: transparent;
+}
+
 .card {
 
   &:hover {
-    border-color: yellow;
-    top: -1em;
+    border: dotted $chalk;
+    z-index: 1;
   }
-  transition: 1s;
-  border: solid black 1px;
-  border-radius: 0.25em;
+  
   background: white;
+  font-weight: bold;
+  border: solid black 1px;
+  border-radius: 0.4em;
   float: left;
   position: absolute;
-  width: 6em;
-  height: 7em;
+  width: 75px;
+  height: 105px;
 
   // top left
   .label1 {
@@ -49,14 +56,15 @@ body {
   .label3 {
     position: absolute;
     top: 80%;
-    left: 65%;
+    left: 75%;
   }
 }
 
 .table {
   height: 30em;
-  width: 50%;
+  width: 70%;
   background: $felt;
+  border: solid $brown 1em;
   border-radius: 1em;
 
   .deck {
