@@ -76,12 +76,22 @@ var Deck = function(){
   }
 
   this.show = function(container_selector){
+    console.log("draw() called.");
     var container = document.querySelector(container_selector);
+    $(container).empty();
     for(i in this.cards){
       var card = this.cards[i];
       card.html.style.left = (i * 15) + "px";
       container.appendChild(card.html);
+      $(card.html).on('click', function(event){
+        console.log("card caught a click");
+        $(event.currentTarget).toggleClass("back");
+      });
     }
+  }
+
+  this.draw = function(){
+    return this.cards.pop()
   }
   
 }
