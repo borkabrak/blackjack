@@ -39,6 +39,10 @@ var Card = function(rank, suit){
 
   }
 
+  this.flip = function(){
+    $(this.html).toggleClass("back");
+  }
+
   function createLabel(classname){
     var label = document.createElement("span");
     label.innerHTML = symbols.ranks[rank] + symbols.suits[suit];
@@ -83,10 +87,15 @@ var Deck = function(){
       var card = this.cards[i];
       card.html.style.left = (i * 15) + "px";
       container.appendChild(card.html);
-      $(card.html).on('click', function(event){
-        console.log("card caught a click");
-        $(event.currentTarget).toggleClass("back");
-      });
+    
+      // Flip the card over when clicked.
+      $(card.html).on('click', 
+        {card: card},   // Enable us to keep the card flipping logic within the card object
+        function(event){
+          event.data.card.flip();
+        }
+      );
+
     }
   }
 
