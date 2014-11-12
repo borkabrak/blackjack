@@ -1,4 +1,4 @@
-var Deck = function(container_selector){
+var Deck = function(label, container_selector){
 
   this.container = document.querySelector(container_selector);
 
@@ -6,6 +6,9 @@ var Deck = function(container_selector){
 
   this.show = function(){
     $(this.container).empty();
+    // Label the deck
+    $(this.container).append($("<strong>" + label + "</strong>"));
+
     for(i in this.cards){
       var card = this.cards[i];
       card.html.style.left = (i * 15) + "px";
