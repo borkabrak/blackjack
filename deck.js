@@ -37,9 +37,19 @@ var Deck = function(label, container_selector){
 
   this.score = function(){
     var score = 0;
+    var soft = 0; // How many aces?
     this.cards.forEach(function(card){
-      score += card.rank
+        score += ( card.rank > 9 ) ? 10 : card.rank;
+        if ( card.rank == 1 && score < 11 ) { soft += 1; score += 10; };
     });
+
+    while (score > 21 && soft > 0){
+      score -= 10;
+      soft -= 1;
+    };
+
+    return score;
+
   }
   
 }

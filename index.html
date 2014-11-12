@@ -24,6 +24,7 @@
     <div class="table">
       <div id="table"  class="deck"></div>
       <div id="player" class="deck"></div>
+      <div id="score"></div>
     </div>
 
     <script>
@@ -47,6 +48,7 @@
       function(event){
         player.push(table.draw().flip());
         player.show();
+        $("#score").html("Score: " + player.score());
       });
 
     </script>
