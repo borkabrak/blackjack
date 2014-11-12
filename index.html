@@ -6,7 +6,8 @@
     <title>Blackjack</title>
     <link rel="stylesheet" href="/script/twitter-bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="blackjack.css">
-    <script src="blackjack.js"></script>
+    <script src="card.js"></script>
+    <script src="deck.js"></script>
     <script src="/script/jquery/jquery.js"></script>
   </head>
 
@@ -21,22 +22,37 @@
     <button id="draw-card">Draw a card</button>
 
     <div class="table">
-      <div id="deck"></div>
-      <div id="players"></div>
+      <div id="table"  class="deck"></div>
+      <div id="player" class="deck"></div>
     </div>
 
     <script>
 
-      var deck = new Deck("#deck");
-      deck.show();
+      // Create and initialize the table deck with a full set of cards.
+      var table = new Deck("#table");
+      var ranks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+      var suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
+      for (suit in suits){
+        for (rank in ranks){
+          table.push(new Card(this.ranks[rank], this.suits[suit]));
+        }
+      }
+      table.show();
 
-      var player = new Player();
+      // Create the player's deck
+      var player = new Deck("#player");
 
+      // Make buttons work
       $("#draw-card").on('click', 
       function(event){
-        console.log("draw!");
-        player.push(deck.draw());
+        player.push(table.draw());
+        player.show();
       });
+
+      // Start with a player hand, mostly for debugging
+      $("#draw-card").click();
+      $("#draw-card").click();
+      player.cards[1].flip();
     </script>
 
   </body>
