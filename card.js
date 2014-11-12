@@ -41,6 +41,7 @@ var Card = function(rank, suit){
 
   this.flip = function(){
     $(this.html).toggleClass("back");
+    return this;
   }
 
   function createLabel(classname){

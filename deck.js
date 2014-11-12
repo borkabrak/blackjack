@@ -34,5 +34,12 @@ var Deck = function(label, container_selector){
   this.push = function(card){
     return this.cards.push(card);
   }
+
+  this.score = function(){
+    var score = 0;
+    this.cards.forEach(function(card){
+      score += card.rank
+    });
+  }
   
 }

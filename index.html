@@ -45,14 +45,10 @@
       // Make buttons work
       $("#draw-card").on('click', 
       function(event){
-        player.push(table.draw());
+        player.push(table.draw().flip());
         player.show();
       });
 
-      // Start with a player hand, mostly for debugging
-      $("#draw-card").click();
-      $("#draw-card").click();
-      player.cards[1].flip();
     </script>
 
   </body>
