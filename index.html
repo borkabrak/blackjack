@@ -18,14 +18,25 @@
       So let's see what it's like to implement a Blackjack table.  Enjoy.
     </p>
 
+    <button id="draw-card">Draw a card</button>
+
     <div class="table">
       <div id="deck"></div>
       <div id="players"></div>
     </div>
 
     <script>
-      var d = new Deck();
-      d.show("#deck");
+
+      var deck = new Deck("#deck");
+      deck.show();
+
+      var player = new Player();
+
+      $("#draw-card").on('click', 
+      function(event){
+        console.log("draw!");
+        player.push(deck.draw());
+      });
     </script>
 
   </body>

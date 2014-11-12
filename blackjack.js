@@ -66,7 +66,9 @@ var Card = function(rank, suit){
 
 }
 
-var Deck = function(){
+var Deck = function(container_selector){
+
+  this.container = document.querySelector(container_selector);
 
   this.cards = [];
 
@@ -79,14 +81,12 @@ var Deck = function(){
     }
   }
 
-  this.show = function(container_selector){
-    console.log("draw() called.");
-    var container = document.querySelector(container_selector);
-    $(container).empty();
+  this.show = function(){
+    $(this.container).empty();
     for(i in this.cards){
       var card = this.cards[i];
       card.html.style.left = (i * 15) + "px";
-      container.appendChild(card.html);
+      this.container.appendChild(card.html);
     
       // Flip the card over when clicked.
       $(card.html).on('click', 
@@ -100,7 +100,19 @@ var Deck = function(){
   }
 
   this.draw = function(){
-    return this.cards.pop()
+    var card = this.cards.pop();
+    this.show();
+    return card;
   }
   
+}
+
+var Player = function(){
+
+  this.hand = [];
+
+  this.push = function(card){
+    this.hand.push(card); 
+  }
+
 }
